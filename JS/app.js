@@ -1,6 +1,6 @@
 window.AppUser = {};
 
-function AppLoadUser() {
+function AppLoadUser(callback) {
     jQuery.ajaxSetup({async:false});
     $.get("/API/Session/current.php", function(data) {
         window.AppUser = data;
@@ -8,6 +8,10 @@ function AppLoadUser() {
     }, 'json');
     jQuery.ajaxSetup({async:true});
     AppLoadMenuItems();
+
+    if (callback !== undefined) {
+        callback();
+    }
 }
 
 function AppLoadMenuItems() {

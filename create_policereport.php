@@ -8,7 +8,7 @@
 		<?php
 			require_once __DIR__ . '/Includes/head.php'
 		?>
-		<script>CheckAdmin();</script>
+		<script>AppLoadUser(CheckAdmin);</script>
 	</head>
 	<body>
 		<?php

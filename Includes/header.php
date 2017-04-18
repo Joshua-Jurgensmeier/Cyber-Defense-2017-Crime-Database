@@ -16,6 +16,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create Record</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="/create_licenseplate.php">License Plate</a>
+          <a class="dropdown-item" href="/create_user.php">Person</a>
           <a class="dropdown-item" href="/create_person.php">Person</a>
           <a class="dropdown-item" href="/create_policereport.php">PoliceReport</a>
           <a class="dropdown-item" href="/create_warrant.php">Warrants</a>
