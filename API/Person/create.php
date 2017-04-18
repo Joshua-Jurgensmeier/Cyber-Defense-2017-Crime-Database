@@ -12,14 +12,17 @@
 
 	$attrs = $required_attrs;
 
-	$values = array_map(function($attr) { return '"' . $_SESSION['req_data'][$attr] . '"'; }, $attrs);
+	#A glorified for each append
+	$values = array_map(function($attr) { return $_SESSION['req_data'][$attr]; }, $attrs);
 
-	$M_query = "INSERT INTO people (" . join(', ', $attrs) . ") VALUES (" . join(',', $values) . ");";
+	#Create a string of question marks for every attribute seperated by commas
+	$placeholders = rtrim(str_repeat("?,", count($attrs)), ",");
+
+	$M_query = $pdo->prepare("INSERT INTO people (" . join(', ', $attrs) . ") VALUES (" . $placeholders . ");");
+	
 	error_log($M_query);
-	$M_result = $mysqli->query($M_query);
-	if (!$M_result) {
-		error_log($mysqli->error);
-		die($mysqli->error);
-	}
+
+	$M_query->execute($values);
+
 	echo "success";
 ?>

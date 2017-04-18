@@ -1,14 +1,15 @@
 <?php
-    global $mysqli, $M_host, $M_user, $M_password, $M_database;
+    
+    include 'dbconf.php'
 
-    $M_host = 'localhost';
-    $M_user = 'crimedb';
-    $M_password = 'cdc';
-    $M_database = 'crimedb';
+    $dsn = "mysql:host=$M_host;dbname=$M_database;charset='utf8'";
+    
+    $opt = [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ];
 
-    $mysqli = new mysqli($M_host, $M_user, $M_password, $M_database);
-    if ($mysqli->connect_errno) {
-        die("Failed to connect to MySQL: " . $mysqli->connect_error);
-    }
-    $mysqli->set_charset("utf8");
+    $pdo = new PDO($dsn, $M_user, $M_password, $opt);
+    
 ?>

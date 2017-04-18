@@ -19,14 +19,15 @@
 		die("Missing optional attribute to update.");
 	}
 
-	$updates = array_map(function($attr) { return $attr . '="' . $_SESSION['req_data'][$attr] . '"'; }, $attrs);
+	$updates = array_map(function($attr) { return $_SESSION['req_data'][$attr]; }, $attrs);
 
-	$M_query = "UPDATE people SET " . join(", ", $updates) . " WHERE id=" . $_SESSION['req_data']['id'] . ";";
+	$updates[] = $_SESSION['req_data']['id'];
+
+	$M_query = $pdo->prepare("UPDATE people SET " . join("= ?, ", $attrs) . "= ? WHERE id= ?;");
+
 	error_log($M_query);
-	$M_result = $mysqli->query($M_query);
-	if (!$M_result) {
-		error_log($mysqli->error);
-		die($mysqli->error);
-	}
+
+	$M_query->execute($updates);
+
 	echo "success";
 ?>

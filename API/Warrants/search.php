@@ -18,25 +18,21 @@
 		die("Must have at least one search parameter.");
 	}
 
-	$attrs = $extended_attrs;
-
-	$conditions = array_map(function($attr) { return $attr . ' LIKE "%' . $_SESSION['req_data'][$attr] . '%"'; }, $attrs);
+	$attr = $extended_attrs[0];
 
 	$M_table = "warrants";
 
-	$M_query = "SELECT * FROM $M_table WHERE " . join(" AND ", $conditions) . ";";
-	if (sizeof($conditions) == 0) {
-		$M_query = "SELECT * FROM $M_table";
-	}
+	$M_query = $pdo->prepare("SELECT * FROM $M_table WHERE $attr LIKE ?;");
 
 	error_log($M_query);
-	$M_result = $mysqli->query($M_query);
+
+	$condition = "%" . $_SESSION['req_data'][$attr] . "%";
+
+	$M_query->execute($condition);
+
 	$result = [];
-	if (!$M_result) {
-		error_log($mysqli->error);
-		die($mysqli->error);
-	}
-	while ($M_row = $M_result->fetch_assoc()) {
+	
+	while ($M_row = $M_query->fetch()) {
 		$result[] = $M_row;
 	}
 	print(json_encode($result));
