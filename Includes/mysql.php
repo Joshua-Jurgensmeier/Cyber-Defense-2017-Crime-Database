@@ -1,8 +1,8 @@
 <?php
     
-    include 'dbconf.php'
+    require_once __DIR__ . '/dbconf.php';
 
-    $dsn = "mysql:host=$M_host;dbname=$M_database;charset='utf8'";
+    $dsn = "mysql:host=$M_host;dbname=$M_database;charset=utf8";
     
     $opt = [
         PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,

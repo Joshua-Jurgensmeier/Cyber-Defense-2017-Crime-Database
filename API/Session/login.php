@@ -16,10 +16,10 @@
     $u = $_SESSION['req_data']['username'];
     $p = $_SESSION['req_data']['password'];
 
-	$M_query = "SELECT * FROM users WHERE name=?;";
+	$M_query = $pdo->prepare("SELECT * FROM users WHERE name=?;");
 	error_log($M_query);
 
-	$M_query->execute($u);
+	$M_query->execute([$u]);
 
 	$M_row = $M_query->fetch();
 

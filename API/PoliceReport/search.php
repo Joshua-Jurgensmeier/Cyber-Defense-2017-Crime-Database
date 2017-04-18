@@ -29,7 +29,7 @@
 
 	$condition = "%" . $_SESSION['req_data'][$attr] . "%";
 
-	$M_query->execute($condition);
+	$M_query->execute([$condition]);
 
 	$result = [];
 	
