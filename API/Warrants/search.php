@@ -33,7 +33,6 @@
 	$result = [];
 	
 	while ($M_row = $M_query->fetch()) {
-		$result[] = $M_row;
-	}
+		$result[] = htmlspecialchars($M_row, ENT_QUOTES);
 	print(json_encode($result));
 ?>
