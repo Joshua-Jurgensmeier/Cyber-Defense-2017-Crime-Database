@@ -13,9 +13,14 @@
 	$attrs = $required_attrs;
 	
 	#A glorified for each append
-	$values = array_map(function($attr) {
-		if($attr == 'password') {return password_hash($_SESSION['req_data'][$attr]);}
-		else {return $_SESSION['req_data'][$attr]; }, $attrs);}
+	$values = array_map (
+
+		function($attr) { 
+			if($attr == 'password') {return password_hash($_SESSION['req_data'][$attr]);} 
+			else {return $_SESSION['req_data'][$attr];}
+		}, 
+		$attrs
+	);
 
 
 	#Create a string of question marks for every attribute seperated by commas

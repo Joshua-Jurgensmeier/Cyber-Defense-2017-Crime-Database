@@ -20,7 +20,7 @@
 
 	$M_table = "users";
 
-	$M_query = $pdo->prepare("SELECT * FROM $M_table WHERE $attr LIKE ?;");
+	$M_query = $pdo->prepare("SELECT id, name, role FROM $M_table WHERE $attr LIKE ?;");
 
 	error_log($M_query);
 
@@ -31,7 +31,10 @@
 	$result = [];
 	
 	while ($M_row = $M_query->fetch()) {
-		foreach($M_row as &$cell) {$cell = htmlspecialchars($cell, ENT_QUOTES);}
+		foreach($M_row as &$cell) {
+			$cell = htmlspecialchars($cell, ENT_QUOTES);
+		}
+		$M_row['password'] = "";
 		unset($cell);
 		$result[] = $M_row;
 	}
