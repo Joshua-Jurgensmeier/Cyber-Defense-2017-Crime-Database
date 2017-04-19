@@ -104,6 +104,11 @@ function AppCreateWarrant(t, p, gd, sa, sb) {
 }
 
 function AppSearch(v, t) {
+    if(t == 'User')
+    {
+        CheckAdmin();
+    }
+    
     var fields = {
         'LicensePlate': ['plate', 'brand', 'model', 'color', 'owner'],
         'Person': ['name', 'dob', 'ssn'],

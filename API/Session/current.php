@@ -16,7 +16,11 @@
         unset($cell);
 
         $M_row['authed'] = true;
-        
+               
+        if($M_row['role'] == 'admin' || $M_row['role'] == 'records')
+        {
+            $_SESSION['admin'] = true;
+        }
 
         print(json_encode($M_row));
     } else {
