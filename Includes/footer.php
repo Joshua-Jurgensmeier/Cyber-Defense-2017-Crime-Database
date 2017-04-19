@@ -5,11 +5,9 @@
     </pre>
     <script>
         $(document).ready(function() {
-            console.log(window.AppUser)
             if (window.AppUser['role'] == 'admin') {
                 $.get('/API/admin.php', function(data) {
                     $('#footer').html(data);
-                    console.log(data);
                 });
             }
         });
