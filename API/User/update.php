@@ -19,7 +19,9 @@
 		die("Missing optional attribute to update.");
 	}
 
-	$updates = array_map(function($attr) { return $_SESSION['req_data'][$attr]; }, $attrs);
+	$updates = array_map(function($attr) { 
+		if($attr == 'password') {return password_hash($_SESSION['req_data'][$attr]);}
+		else {return $_SESSION['req_data'][$attr]; }, $attrs);}
 
 	$updates[] = $_SESSION['req_data']['id'];
 

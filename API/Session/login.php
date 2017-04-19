@@ -23,7 +23,7 @@
 
 	$M_row = $M_query->fetch();
 
-	if ($M_row['password'] == $p) {
+	if (password_verify($p, $M_row['password'])) {
 		$_SESSION['id'] = $M_row['id'];
 		$_SESSION['username'] = $u;
 		$_SESSION['password'] = $p;

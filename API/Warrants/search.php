@@ -36,6 +36,6 @@
 		foreach($M_row as &$cell) {$cell = htmlspecialchars($cell, ENT_QUOTES);}
 		unset($cell);
 		$result[] = $M_row;
-
+	}
 	print(json_encode($result));
 ?>

@@ -7,13 +7,17 @@
     	error_log($M_query);
 
         $M_query->execute([$_SESSION['id']]);
-    	
-        $result = [];
 
         $M_row = $M_query->fetch();
 
+        foreach($M_row as &$cell) {
+            $cell = htmlspecialchars($cell, ENT_QUOTES);
+        }
+        unset($cell);
+
         $M_row['authed'] = true;
         
+
         print(json_encode($M_row));
     } else {
         print('{"authed": false}');

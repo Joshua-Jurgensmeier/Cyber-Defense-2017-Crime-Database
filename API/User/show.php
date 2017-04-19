@@ -10,13 +10,15 @@
 		die("Error: missing required attribute");
 	}
 
-	$M_query = $pdo->prepare("SELECT * FROM users WHERE id=?;");
+	$M_query = $pdo->prepare("SELECT id, name, role FROM users WHERE id=?;");
 
 	error_log($M_query);
 
 	$M_query->execute([$_SESSION['req_data']['id']]);
 
 	$M_row = $M_query->fetch();
+
+	$M_row['password'] = "";
 
 	print(json_encode($M_row));
 ?>
