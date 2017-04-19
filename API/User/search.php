@@ -34,7 +34,7 @@
 		foreach($M_row as &$cell) {
 			$cell = htmlspecialchars($cell, ENT_QUOTES);
 		}
-		$M_row['password'] = "";
+		$M_row['password'] = "*****";
 		unset($cell);
 		$result[] = $M_row;
 	}
