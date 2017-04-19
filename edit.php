@@ -35,7 +35,6 @@
                     } else {
                         $('#form-results').html('<div class="alert alert-warning" role="alert"><strong>Error!</strong> An error occurred editing data: ' + data + '.</div>');
                     }
-                    console.log(data);
                 });
                 jQuery.ajaxSetup({async:true});
             }
@@ -76,9 +75,9 @@
                 var t = window.EditingTable;
                 for (var fid in fields[t]) {
                     var field = fields[t][fid];
-                    console.log(field);
+
                     window.EditingData[field] = $('#' + field).val();
-                    console.log(window.EditingData)
+
                 }
 
                 jQuery.ajaxSetup({async:false});
@@ -88,7 +87,7 @@
                     } else {
                         $('#form-results').html('<div class="alert alert-warning" role="alert"><strong>Error!</strong> An error occurred editing data: ' + data + '.</div>');
                     }
-                    console.log(data);
+
                 });
                 jQuery.ajaxSetup({async:true});
 			}
