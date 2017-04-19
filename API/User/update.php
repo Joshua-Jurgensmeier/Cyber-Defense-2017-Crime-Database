@@ -22,7 +22,7 @@
 	$updates = array_map (
 
 		function($attr) { 
-			if($attr == 'password') {return password_hash($_SESSION['req_data'][$attr]);} 
+			if($attr == 'password') {return password_hash($_SESSION['req_data'][$attr], PASSWORD_DEFAULT);} 
 			else {return $_SESSION['req_data'][$attr];}
 		}, 
 		$attrs
