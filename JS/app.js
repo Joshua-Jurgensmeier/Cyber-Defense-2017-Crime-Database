@@ -4,7 +4,6 @@ function AppLoadUser(callback) {
     jQuery.ajaxSetup({async:false});
     $.get("/API/Session/current.php", function(data) {
         window.AppUser = data;
-        console.log(data);
     }, 'json');
     jQuery.ajaxSetup({async:true});
     AppLoadMenuItems();
@@ -31,7 +30,6 @@ function AppLogIn(u, p) {
             AppLoadUser();
             $('#form-results').html('<div class="alert alert-success" role="alert"><strong>Success!</strong> You successfully logged in as ' + window.AppUser['name'] + '.</div>');
         } else {
-            console.log(data);
             $('#form-results').html('<div class="alert alert-warning" role="alert"><strong>Error!</strong> An error occurred: ' + data + '.</div>');
         }
     });
@@ -44,7 +42,6 @@ function AppCreatePerson(n, d, s) {
         if (data == 'success') {
             $('#form-results').html('<div class="alert alert-success" role="alert"><strong>Success!</strong> You successfully created a new person.</div>');
         } else {
-            console.log(data);
             $('#form-results').html('<div class="alert alert-warning" role="alert"><strong>Error!</strong> An error occurred: ' + data + '.</div>');
         }
     });
@@ -57,7 +54,6 @@ function AppCreateLicensePlate(p, b, m, c, o) {
         if (data == 'success') {
             $('#form-results').html('<div class="alert alert-success" role="alert"><strong>Success!</strong> You successfully created a new license plate.</div>');
         } else {
-            console.log(data);
             $('#form-results').html('<div class="alert alert-warning" role="alert"><strong>Error!</strong> An error occurred: ' + data + '.</div>');
         }
     });
@@ -70,7 +66,6 @@ function AppCreatePoliceReport(ro, rt, ot, t, d, rp) {
         if (data == 'success') {
             $('#form-results').html('<div class="alert alert-success" role="alert"><strong>Success!</strong> You successfully created a new police report.</div>');
         } else {
-            console.log(data);
             $('#form-results').html('<div class="alert alert-warning" role="alert"><strong>Error!</strong> An error occurred: ' + data + '.</div>');
         }
     });
@@ -83,7 +78,6 @@ function AppCreateUser(n, p, r) {
         if (data == 'success') {
             $('#form-results').html('<div class="alert alert-success" role="alert"><strong>Success!</strong> You successfully created a new user.</div>');
         } else {
-            console.log(data);
             $('#form-results').html('<div class="alert alert-warning" role="alert"><strong>Error!</strong> An error occurred: ' + data + '.</div>');
         }
     });
@@ -96,7 +90,6 @@ function AppCreateWarrant(t, p, gd, sa, sb) {
         if (data == 'success') {
             $('#form-results').html('<div class="alert alert-success" role="alert"><strong>Success!</strong> You successfully created a new warrant.</div>');
         } else {
-            console.log(data);
             $('#form-results').html('<div class="alert alert-warning" role="alert"><strong>Error!</strong> An error occurred: ' + data + '.</div>');
         }
     });
@@ -108,7 +101,7 @@ function AppSearch(v, t) {
     {
         CheckAdmin();
     }
-    
+
     var fields = {
         'LicensePlate': ['plate', 'brand', 'model', 'color', 'owner'],
         'Person': ['name', 'dob', 'ssn'],
