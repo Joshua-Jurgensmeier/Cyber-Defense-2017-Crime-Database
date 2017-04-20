@@ -1,5 +1,5 @@
 <?php
-	if(!(isset($_SESSION['admin']) and $_SESSION['admin'] == true) and ($_SERVER['REQUEST_METHOD'] != "POST"))
+	if(!(isset($_SESSION['admin']) and $_SESSION['admin'] == true))
 	{
 		header('Location: http://crime.team12.isucdc.com/index.php');
 		exit("Access denied");
@@ -39,8 +39,10 @@
 		foreach($M_row as &$cell) {
 			$cell = htmlspecialchars($cell, ENT_QUOTES);
 		}
-		$M_row['password'] = "*****";
 		unset($cell);
+
+		$M_row['password'] = "*****";
+
 		$result[] = $M_row;
 	}
 	print(json_encode($result));
