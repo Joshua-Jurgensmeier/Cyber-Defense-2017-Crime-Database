@@ -28,7 +28,7 @@
 
 	if($_SESSION['req_data']['password'] == "")
 	{
-		$attrs = array_diff($attrs, array('password'))
+		$attrs = array_diff($attrs, array('password'));
 	}
 
 	$updates = array_map (
