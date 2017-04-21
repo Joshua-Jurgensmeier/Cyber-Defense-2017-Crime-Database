@@ -3,10 +3,6 @@
 	require_once __DIR__ . '/../../Includes/top.php';
 	require_once __DIR__ . '/../utils.php';
 
-
-	header('Location: http://www.team12.isucdc.com/403.php');
-	exit("Access denied");
-
 	$_SESSION['req_data'] = parse_request();
 
 	$required_attrs = ['plate', 'brand', 'model', 'color', 'owner'];

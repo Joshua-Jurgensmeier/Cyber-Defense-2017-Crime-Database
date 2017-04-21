@@ -26,11 +26,22 @@
 		die("Missing optional attribute to update.");
 	}
 
+	if($_SESSION['req_data']['password'] == "")
+	{
+		$attrs = array_diff($attrs, array('password'))
+	}
+
 	$updates = array_map (
 
 		function($attr) { 
-			if($attr == 'password') {return password_hash($_SESSION['req_data'][$attr], PASSWORD_DEFAULT);} 
-			else {return $_SESSION['req_data'][$attr];}
+			if($attr == 'password') 
+			{	
+				return password_hash($_SESSION['req_data'][$attr], PASSWORD_DEFAULT);
+			} 
+			else 
+			{
+				return $_SESSION['req_data'][$attr];
+			}
 		}, 
 		$attrs
 	);
